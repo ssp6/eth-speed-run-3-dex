@@ -13,12 +13,12 @@ If redeploy run:
 ```bash
 // If make any change to contracts
 yarn deploy --network rinkeby
-// Ensure `const targetNetworkInfo = NETWORKS.rinkeby;` in `providerConfig.ts`
+// Ensure `const targetNetwork = NETWORKS.rinkeby;` in `App.jsx`
 yarn build
 yarn surge & ipfs
 
 // If only make changes to front end
-// Ensure `const targetNetworkInfo = NETWORKS.rinkeby;` in `providerConfig.ts`
+// Ensure `const targetNetwork = NETWORKS.rinkeby;` in `App.jsx`
 yarn build
 yarn surge & ipfs
 ```
