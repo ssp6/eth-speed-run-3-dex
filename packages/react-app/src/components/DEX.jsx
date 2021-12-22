@@ -24,7 +24,8 @@ export default function DEX(props) {
   const contractAddress = props.readContracts ? props.readContracts[contractName].address : "";
   const contractBalance = useBalance(props.injectedProvider, contractAddress);
 
-  const tokenBalance = useTokenBalance(props.readContracts, contractAddress);
+  const tokenContract = props.readContracts && props.readContracts[tokenName];
+  const tokenBalance = useTokenBalance(tokenContract, contractAddress, 1777);
   const tokenBalanceFloat = parseFloat(ethers.utils.formatEther(tokenBalance));
   const ethBalance = useBalance(props.localProvider, contractAddress);
   const ethBalanceFloat = parseFloat(ethers.utils.formatEther(ethBalance));
@@ -166,7 +167,7 @@ export default function DEX(props) {
   let addingEth = 0;
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingBottom: 128 }}>
       <div style={{ padding: 20 }}>
         <Curve
           addingEth={values && values["ethToToken"] ? values["ethToToken"] : 0}

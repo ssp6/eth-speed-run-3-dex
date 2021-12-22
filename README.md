@@ -1,5 +1,29 @@
 # 🏗 scaffold-eth | 🏰 BuidlGuidl
 
+## Completed by me
+
+To use the app you need to first approve:
+- That the DEX can send `Ballon` (in `Balloon` contract of debug tab approve using `Dex` address)
+- That YOU can send `Ballon` tokens (same as above)
+
+- Deployed on https at `https://sean-eth-speed-run-3.surge.sh`
+
+
+If redeploy run:
+```bash
+// If make any change to contracts
+yarn deploy --network rinkeby
+// Ensure `const targetNetworkInfo = NETWORKS.rinkeby;` in `providerConfig.ts`
+yarn build
+yarn surge & ipfs
+
+// If only make changes to front end
+// Ensure `const targetNetworkInfo = NETWORKS.rinkeby;` in `providerConfig.ts`
+yarn build
+yarn surge & ipfs
+```
+
+
 ## 🚩 Challenge 3: Minimum Viable Exchange
 
 This challenge will provide a tutorial to help you build/understand a simple decentralized exchange. This readme is an upated version of the [original tutorial](https://medium.com/@austin_48503/%EF%B8%8F-minimum-viable-exchange-d84f30bd0c90). Please read the intro for a background on what we are building!

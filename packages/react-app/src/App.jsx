@@ -470,21 +470,23 @@ function App(props) {
         <Switch>
           <Route exact path="/">
             {/* Uncomment below to view front end */}
-            {/* { readContracts && readContracts.DEX && address && localProvider ?
-                <Dex
-              address={address}
-              tx={tx}
-              writeContracts={writeContracts}
-              localProvider={localProvider}
-              mainnetProvider={mainnetProvider}
-              injectedProvider={localProvider}
-              readContracts={readContracts}
-              blockExplorer={blockExplorer}
-              contractConfig={contractConfig}
-              signer={userSigner}
-              price={price}
-            /> : ""
-             }  */}
+            {readContracts && readContracts.DEX && address && localProvider ? (
+              <Dex
+                address={address}
+                tx={tx}
+                writeContracts={writeContracts}
+                localProvider={localProvider}
+                mainnetProvider={mainnetProvider}
+                injectedProvider={localProvider}
+                readContracts={readContracts}
+                blockExplorer={blockExplorer}
+                contractConfig={contractConfig}
+                signer={userSigner}
+                price={price}
+              />
+            ) : (
+              ""
+            )}
           </Route>
 
           <Route path="/contracts">
@@ -495,6 +497,7 @@ function App(props) {
               address={address}
               blockExplorer={blockExplorer}
               contractConfig={contractConfig}
+              price={price}
             />
             <Contract
               name="Balloons"
@@ -503,6 +506,7 @@ function App(props) {
               address={address}
               blockExplorer={blockExplorer}
               contractConfig={contractConfig}
+              price={price}
             />
           </Route>
         </Switch>

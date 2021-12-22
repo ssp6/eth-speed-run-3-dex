@@ -5,10 +5,11 @@ const { ethers } = require("hardhat");
 module.exports = async ({ getNamedAccounts, deployments }) => {
   const { deploy } = deployments;
   const { deployer } = await getNamedAccounts();
+  console.log(`Deployer - ${deployer}`);
   await deploy("Balloons", {
     // Learn more about args here: https://www.npmjs.com/package/hardhat-deploy#deploymentsdeploy
     from: deployer,
-    //args: [ "Hello", ethers.utils.parseEther("1.5") ],
+    // args: [ "Hello", ethers.utils.parseEther("1.5") ],
     log: true,
   });
 
@@ -17,21 +18,21 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   await deploy("DEX", {
     // Learn more about args here: https://www.npmjs.com/package/hardhat-deploy#deploymentsdeploy
     from: deployer,
-    args: [ balloons.address],
+    args: [balloons.address],
     log: true,
   });
 
   const dex = await ethers.getContract("DEX", deployer);
-  
-  // paste in your address here to get 10 balloons on deploy:
-  // await balloons.transfer("YOUR_ADDRESS",""+(10*10**18));
 
-  // uncomment to init DEX on deploy:
-  // console.log("Approving DEX ("+dex.address+") to take Balloons from main account...")
-  // If you are going to the testnet make sure your deployer account has enough ETH
-  // await balloons.approve(dex.address,ethers.utils.parseEther('100'));
-  // // console.log("INIT exchange...")
-  // await dex.init(""+(3*10**18),{value:ethers.utils.parseEther('3'),gasLimit:200000})
-
+  console.log(
+    "Approving DEX (" + dex.address + ") to take Balloons from main account..."
+  );
+  await balloons.approve(dex.address, ethers.utils.parseEther("100"));
+  console.log("INIT exchange...");
+  const etherToInitWith = 0.005;
+  await dex.init(`${etherToInitWith * 10 ** 18}`, {
+    value: ethers.utils.parseEther(`${etherToInitWith}`),
+    gasLimit: 200000,
+  });
 };
 module.exports.tags = ["YourContract"];

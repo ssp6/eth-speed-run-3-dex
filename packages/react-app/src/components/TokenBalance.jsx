@@ -8,7 +8,6 @@ export default function TokenBalance(props) {
 
   const tokenContract = props.contracts && props.contracts[props.name];
   const balance = useTokenBalance(tokenContract, props.address, 1777);
-
   let floatBalance = parseFloat("0.00");
 
   let usingBalance = balance;
