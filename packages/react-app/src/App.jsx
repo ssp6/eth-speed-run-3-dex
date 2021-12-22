@@ -248,7 +248,6 @@ function App(props) {
     "0x34aA3F359A9D614239015126635CE7732c18fDF3",
   ]);
 
-
   /*
   const addressFromENS = useResolveName(mainnetProvider, "austingriffith.eth");
   console.log("🏷 Resolved austingriffith.eth as:",addressFromENS)
@@ -470,7 +469,6 @@ function App(props) {
 
         <Switch>
           <Route exact path="/">
-
             {/* Uncomment below to view front end */}
             {/* { readContracts && readContracts.DEX && address && localProvider ?
                 <Dex
@@ -487,7 +485,6 @@ function App(props) {
               price={price}
             /> : ""
              }  */}
-           
           </Route>
 
           <Route path="/contracts">
